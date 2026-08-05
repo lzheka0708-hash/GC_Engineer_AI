@@ -1,0 +1,39 @@
+/* Основное окно */
+QMainWindow {
+    background-color: #f5f5f5;
+}
+/* Все виджеты */
+QWidget {
+   font-size: 10pt;
+   font-family: "Segoe UI";
+}
+/* Левая панель */
+Sidebar {
+    background-color: white;
+    border-right: 1px solid #dcdcdc;
+}
+/* Заголовок */
+QLabel {
+    font-size: 18pt;
+    font-weight: bold;
+    color: #2c3e50;
+}
+/* Кнопки */
+QPushButton {
+    text-align: left;
+   padding: 10px; 
+   border: none;
+   border-radius: 8px;
+   background-color: white;
+}
+QPushButton:hover {
+    background-color: #e8f0fe;
+}
+QPushButton:pressed {
+    background-color: #d2e3fc;
+}
+QPushButton[active="true"] {
+    background-color: #1976D2;
+    color: white;
+    font-weight: bold;
+}

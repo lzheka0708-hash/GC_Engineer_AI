@@ -37,4 +37,20 @@ class Mainwindow(QMainWindow):
         self.stack.addWidget(self.settings_page)
         layout.addWidget(self.sidebar)
         layout.addWidget(self.stack)
-        
+        self.sidebar.chat_clicked.connect(self.show_chat)
+        self.sidebar.diagnostics_clicked.connect(self.show_diagnostics)
+        self.sidebar.documents_clicked.connect(self.show_documents)
+        self.sidebar.settings_clicked.connect(self.show_settings)
+        self.sidebar.set_active_button(self.sidebar.chat_btn)
+    def show_chat(self):
+        self.stack.setCurrentWidget(self.chat_page)
+        self.sidebar.set_active_button(self.sidebar.chat_btn)
+    def show_diagnostics(self):
+        self.stack.setCurrentWidget(self.diagnostics_page)
+        self.sidebar.set_active_button(self.sidebar.diagnostics_btn)
+    def show_documents(self):
+        self.stack.setCurrentWidget(self.documents_page)
+        self.sidebar.set_active_button(self.sidebar.docs_btn)
+    def show_settings(self):
+        self.stack.setCurrentWidget(self.settings_page)
+        self.sidebar.set_active_button(self.sidebar.settings_btn)   
