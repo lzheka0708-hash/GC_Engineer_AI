@@ -1,5 +1,6 @@
 from PySide6.QtWidgets import (
     QHBoxLayout,
+    QVBoxLayout,
     QMainWindow,
     QStackedWidget,
     QWidget,
@@ -11,6 +12,7 @@ from ui.pages.documents_page import DocumentsPage
 from ui.pages.home_page import HomePage
 from ui.pages.settings_page import SettingsPage
 from ui.widgets.sidebar import Sidebar
+from ui.widgets.header import Header
 
 
 class Mainwindow(QMainWindow):
@@ -24,7 +26,9 @@ class Mainwindow(QMainWindow):
         central = QWidget()
         self.setCentralWidget(central)
         layout = QHBoxLayout(central)
+        content_layout = QVBoxLayout()
         self.stack = QStackedWidget()
+        self.header = Header()
         self.home_page = HomePage()
         self.chat_page = ChatPage()
         self.diagnostics_page = DiagnosticsPage()
@@ -35,8 +39,10 @@ class Mainwindow(QMainWindow):
         self.stack.addWidget(self.diagnostics_page)
         self.stack.addWidget(self.documents_page)
         self.stack.addWidget(self.settings_page)
+        content_layout.addWidget(self.header)
+        content_layout.addWidget(self.stack)
         layout.addWidget(self.sidebar)
-        layout.addWidget(self.stack)
+        layout.addLayout(content_layout)
         self.sidebar.chat_clicked.connect(self.show_chat)
         self.sidebar.diagnostics_clicked.connect(self.show_diagnostics)
         self.sidebar.documents_clicked.connect(self.show_documents)
