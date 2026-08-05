@@ -20,6 +20,7 @@ class Mainwindow(QMainWindow):
         self.resize(1400, 900)
         self._build_ui()
     def _build_ui(self):
+        self.sidebar = Sidebar()
         central = QWidget()
         self.setCentralWidget(central)
         layout = QHBoxLayout(central)
@@ -36,5 +37,4 @@ class Mainwindow(QMainWindow):
         self.stack.addWidget(self.settings_page)
         layout.addWidget(self.sidebar)
         layout.addWidget(self.stack)
-        self.sidebar = Sidebar()
-        layout.addWidget(self.sidebar)
+        
